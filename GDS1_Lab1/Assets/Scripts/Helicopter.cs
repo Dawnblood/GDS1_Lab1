@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Helicopter : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Helicopter : MonoBehaviour
     Vector2 movement;
 
     public int soldierHelicopter = 0;
+
+    public Text soldiersInHelicopter;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,8 @@ public class Helicopter : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        soldiersInHelicopter.text = soldierHelicopter.ToString();
     }
 
     private void FixedUpdate()
@@ -38,19 +43,9 @@ public class Helicopter : MonoBehaviour
         {
             SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
         }
-        else if (collision.tag == "Hospital")
+        else if (collision.tag == "Hospital" && soldierHelicopter > 0)
         {
-            soldierHelicopter -= 1;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        Debug.Log("Trigger Stay");
-
-        if (collision.tag == "Hospital")
-        {
-            soldierHelicopter -= 1;
+            soldierHelicopter = 0;
         }
     }
 }
