@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8717171964523551893}
   - component: {fileID: 2618043136590114405}
   - component: {fileID: 3403116669734675154}
+  - component: {fileID: 4336996575137685310}
   m_Layer: 0
   m_Name: Hospital
   m_TagString: Hospital
@@ -109,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.13, y: 2.7}
   m_EdgeRadius: 0
+--- !u!114 &4336996575137685310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571478788452694529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b393444e87269494d8acbd6a4f756d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldiersSaved: 0

@@ -13,7 +13,7 @@ public class Helicopter : MonoBehaviour
 
     public int soldierHelicopter = 0;
 
-    public Text soldiersInHelicopter;
+    public Text soldiersHelicopterText;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class Helicopter : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        soldiersInHelicopter.text = soldierHelicopter.ToString();
+        soldiersHelicopterText.text = soldierHelicopter.ToString();
     }
 
     private void FixedUpdate()
