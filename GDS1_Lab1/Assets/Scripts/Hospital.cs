@@ -5,28 +5,25 @@ using UnityEngine.UI;
 
 public class Hospital : MonoBehaviour
 {
-
-    public int soldiersSaved = 0;
-
-    public Text soldiersSavedText;
+    GameObject LevelManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        soldiersSavedText.text = soldiersSaved.ToString();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Helicopter")
         {
-            soldiersSaved += collision.gameObject.GetComponent<Helicopter>().soldierHelicopter;
+            LevelManager.GetComponent<LevelManager>().soldiersSaved += LevelManager.GetComponent<LevelManager>().soldierHelicopter;
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Soldier
   - Hospital
   - Helicopter
+  - LevelManager
   layers:
   - Default
   - TransparentFX

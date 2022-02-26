@@ -8,17 +8,15 @@ public class Helicopter : MonoBehaviour
 {
 
     public Rigidbody2D helicopter;
-    public float moveSpeed = 3f;
+    public float moveSpeed = 5f;
     Vector2 movement;
 
-    public int soldierHelicopter = 0;
-
-    public Text soldiersHelicopterText;
+    GameObject LevelManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
     }
 
     // Update is called once per frame
@@ -26,8 +24,6 @@ public class Helicopter : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-
-        soldiersHelicopterText.text = soldierHelicopter.ToString();
     }
 
     private void FixedUpdate()
@@ -37,15 +33,13 @@ public class Helicopter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger Enter");
-
         if (collision.tag == "Tree")
         {
             SceneManager.LoadScene("Game Over", LoadSceneMode.Single);
         }
-        else if (collision.tag == "Hospital" && soldierHelicopter > 0)
+        else if (collision.tag == "Hospital" && LevelManager.GetComponent<LevelManager>().soldierHelicopter > 0)
         {
-            soldierHelicopter = 0;
+            LevelManager.GetComponent<LevelManager>().soldierHelicopter = 0;
         }
     }
 }

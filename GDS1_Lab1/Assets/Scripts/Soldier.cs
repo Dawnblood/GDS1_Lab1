@@ -5,10 +5,12 @@ using UnityEngine;
 public class Soldier : MonoBehaviour
 {
 
+    GameObject LevelManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
     }
 
     // Update is called once per frame
@@ -19,12 +21,9 @@ public class Soldier : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.tag == "Helicopter" && collision.gameObject.GetComponent<Helicopter>().soldierHelicopter < 2)
+        if (collision.tag == "Helicopter" && LevelManager.GetComponent<LevelManager>().soldierHelicopter < 2)
         {
-            collision.gameObject.GetComponent<Helicopter>().soldierHelicopter += 1;
-
-            Debug.Log(collision.gameObject.GetComponent<Helicopter>().soldierHelicopter);
+            LevelManager.GetComponent<LevelManager>().soldierHelicopter += 1;
 
             Destroy(this.gameObject);
         }
