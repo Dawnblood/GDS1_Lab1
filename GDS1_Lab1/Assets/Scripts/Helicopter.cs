@@ -14,12 +14,18 @@ public class Helicopter : MonoBehaviour
     GameObject levelManager;
     GameObject helicopter;
 
+    public AudioSource audioSource;
+
+    bool dontPlay = false;
+
     // Start is called before the first frame update
     void Start()
     {
         levelManager = GameObject.FindGameObjectWithTag("LevelManager");
 
         helicopter = GameObject.Find("Helicopter");
+
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +41,11 @@ public class Helicopter : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && helicopter.transform.rotation.y > 0)
         {
             helicopter.transform.Rotate(new Vector3(0, 180, 0));
+        }
+
+        if (levelManager.GetComponent<LevelManager>().soldierHelicopter == 2)
+        {
+            dontPlay = true;
         }
     }
 
@@ -52,6 +63,12 @@ public class Helicopter : MonoBehaviour
         else if (collision.tag == "Hospital" && levelManager.GetComponent<LevelManager>().soldierHelicopter > 0)
         {
             levelManager.GetComponent<LevelManager>().soldierHelicopter = 0;
+        }
+        else if(collision.tag == "Soldier" && levelManager.GetComponent<LevelManager>().soldierHelicopter < 2)
+        {
+            audioSource.Play();
+
+            levelManager.GetComponent<LevelManager>().soldierHelicopter += 1;
         }
     }
 }
