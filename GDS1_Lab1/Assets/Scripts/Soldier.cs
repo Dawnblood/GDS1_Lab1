@@ -7,16 +7,21 @@ public class Soldier : MonoBehaviour
 
     GameObject LevelManager;
 
+    public float radius = 5f;
+    public LayerMask filterMask;
+
+    private Collider2D checkCollider;
+
     // Start is called before the first frame update
     void Start()
     {
-        LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

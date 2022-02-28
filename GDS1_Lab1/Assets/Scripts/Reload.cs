@@ -5,18 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Reload : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void RestartLevel()
     {
-        
+        SceneManager.LoadScene("Level", LoadSceneMode.Single);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MainMenu()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("Level", LoadSceneMode.Single);
-        }
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 }
