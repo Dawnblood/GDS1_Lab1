@@ -24,6 +24,8 @@ public class Hospital : MonoBehaviour
         if (collision.tag == "Helicopter")
         {
             LevelManager.GetComponent<LevelManager>().soldiersSaved += LevelManager.GetComponent<LevelManager>().soldierHelicopter;
+
+            LevelManager.GetComponent<AudioSource>().Play();
         }
     }
 }
