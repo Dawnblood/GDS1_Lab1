@@ -28,9 +28,9 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        soldiersSavedText.text = soldiersSaved.ToString();
-
         soldiersHelicopterText.text = soldierHelicopter.ToString();
+
+        soldiersSavedText.text = soldiersSaved.ToString();
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -51,8 +51,8 @@ public class LevelManager : MonoBehaviour
 
         for (int i = 0; i < numSoldiers; i++)
         {
-            float spawnPosX = Random.Range(5.4f, 11.45f);
-            float spawnPosY = Random.Range(4f, -4f);
+            float spawnPosX = Random.Range(4f, 8f);
+            float spawnPosY = Random.Range(4f, -2f);
             Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, 0);
 
             Instantiate(soldier, spawnPos, Quaternion.identity);

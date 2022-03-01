@@ -8,15 +8,13 @@ public class Helicopter : MonoBehaviour
 {
 
     public Rigidbody2D helicopterRGB;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 40f;
     Vector2 movement;
 
     GameObject levelManager;
     GameObject helicopter;
 
     public AudioSource audioSource;
-
-    bool dontPlay = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,11 +40,6 @@ public class Helicopter : MonoBehaviour
         {
             helicopter.transform.Rotate(new Vector3(0, 180, 0));
         }
-
-        if (levelManager.GetComponent<LevelManager>().soldierHelicopter == 2)
-        {
-            dontPlay = true;
-        }
     }
 
     private void FixedUpdate()
@@ -62,6 +55,10 @@ public class Helicopter : MonoBehaviour
         }
         else if (collision.tag == "Hospital" && levelManager.GetComponent<LevelManager>().soldierHelicopter > 0)
         {
+            levelManager.GetComponent<LevelManager>().soldiersSaved += levelManager.GetComponent<LevelManager>().soldierHelicopter;
+
+            levelManager.GetComponent<AudioSource>().Play();
+
             levelManager.GetComponent<LevelManager>().soldierHelicopter = 0;
         }
         else if(collision.tag == "Soldier" && levelManager.GetComponent<LevelManager>().soldierHelicopter < 2)
