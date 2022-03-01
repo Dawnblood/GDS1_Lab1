@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Hospital : MonoBehaviour
 {
-    GameObject LevelManager;
+    GameObject levelManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        LevelManager = GameObject.FindGameObjectWithTag("LevelManager");
+        levelManager = GameObject.FindGameObjectWithTag("LevelManager");
     }
 
     // Update is called once per frame
@@ -21,11 +21,11 @@ public class Hospital : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Helicopter")
+        if (collision.tag == "Helicopter" && levelManager.GetComponent<LevelManager>().soldierHelicopter > 0)
         {
-            LevelManager.GetComponent<LevelManager>().soldiersSaved += LevelManager.GetComponent<LevelManager>().soldierHelicopter;
+            levelManager.GetComponent<LevelManager>().soldiersSaved += levelManager.GetComponent<LevelManager>().soldierHelicopter;
 
-            LevelManager.GetComponent<AudioSource>().Play();
+            levelManager.GetComponent<AudioSource>().Play();
         }
     }
 }
