@@ -19,8 +19,8 @@ public class Bullet : MonoBehaviour
     {
         tank = GameObject.Find("Tank");
 
-        pos1 = new Vector3(tank.transform.position.x, -4, -1);
-        pos2 = new Vector3(tank.transform.position.x, 10, -1);
+        pos1 = new Vector3(tank.transform.position.x, -2.8f, 0);
+        pos2 = new Vector3(tank.transform.position.x, 10, 0);
     }
 
     // Update is called once per frame
